@@ -1,0 +1,64 @@
+.completed-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #4e73df, #1cc88a);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.completed-card {
+  background: white;
+  padding: 50px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  transform: translateY(40px);
+  opacity: 0;
+  transition: all 0.6s ease;
+  width: 350px;
+}
+
+.completed-card.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.completed-card .icon {
+  font-size: 50px;
+  margin-bottom: 15px;
+}
+
+.completed-card h1 {
+  font-size: 26px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.completed-card h2 {
+  font-size: 20px;
+  color: #1cc88a;
+  margin-bottom: 20px;
+}
+
+.completed-card p {
+  color: #666;
+  margin-bottom: 25px;
+  font-size: 15px;
+}
+
+.completed-card button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #4e73df;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.completed-card button:hover {
+  background: #2e59d9;
+  transform: scale(1.05);
+}
