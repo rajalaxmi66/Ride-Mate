@@ -1,6 +1,9 @@
 // backend/controllers/groupController.js
 const RideGroup = require("../models/RideGroup");
 const axios = require("axios");
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config(); // load .env only locally
+}
 
 // ✅ User joins a group
 exports.joinGroup = async (req, res) => {
