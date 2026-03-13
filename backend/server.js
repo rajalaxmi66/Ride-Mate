@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
+
 const authRoutes = require("./routes/authRoutes");
 
 const rideRoutes = require("./routes/rideRoutes");
@@ -27,6 +28,16 @@ app.use("/api/groups", groupRoutes);
 app.get("/", (req, res) => {
   res.send("Auto Pool Backend is running 🚀");
 });
+const rateLimit = require("express-rate-limit");
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100
+});
+
+app.use("/api", limiter);
+const helmet = require("helmet");
+app.use(helmet());
 
 // Port
 const PORT = process.env.PORT || 5000;

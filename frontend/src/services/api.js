@@ -7,10 +7,26 @@ const API = axios.create({
 // Attach token automatically
 API.interceptors.request.use((req) => {
   const token = localStorage.getItem("token");
+
   if (token) {
     req.headers.Authorization = `Bearer ${token}`;
   }
+
   return req;
 });
+
+// Handle token expiry / unauthorized responses
+API.interceptors.response.use(
+  (response) => response,
+  (error) => {
+
+    if (error.response && error.response.status === 401) {
+      localStorage.removeItem("token");
+      window.location.href = "/login";
+    }
+
+    return Promise.reject(error);
+  }
+);
 
 export default API;
